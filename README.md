@@ -1,4 +1,4 @@
-##mkumaran.net
+# mkumaran.net
 
 My personal blog using Gatsby blog starter.
 

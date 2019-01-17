@@ -3,7 +3,7 @@ module.exports = {
     title: `mkumaran.net`,
     author: `M Kumaran`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `http://mkumaran.net/`,
     social: {
       twitter: `kumaran_muthu`,
     },
@@ -57,8 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `M Kumaran personal blog and website`,
+        short_name: `mkumaran`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
