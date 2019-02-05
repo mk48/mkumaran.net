@@ -11,10 +11,12 @@ Tools –> NuGet Package Manager –> Package Manager Settings
 
 
 ![NuGet package manager setting in visual studio menu](.\nugetinvsmenu.jpg)
+NuGet package manager setting in visual studio menu
 
 ####Settings screen
 
 ![NuGet settings screen in VisualStudio](.\nugetsettingsinvs.jpg)
+NuGet settings screen in VisualStudio
 
 1.	select package sources
 2.	add a new package source
@@ -30,6 +32,7 @@ Tools –> NuGet Package Manager –> Manage NuGet Packages for Solution
 
 select Package
 ![Change source and package for myget](.\chnage-source-and-package-myget.jpg)
+Change source and package for myget
 
 1.	Select myget from Package source.
 2.	We can see the list of available packages in left side.
