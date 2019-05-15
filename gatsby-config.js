@@ -2,11 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `mkumaran.net`,
     author: `M Kumaran`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Personal website and blog of M.Kumaran`,
     siteUrl: `http://mkumaran.net/`,
     social: {
       twitter: `kumaran_muthu`,
-      github: `mk48`
+      github: `mk48`,
     },
   },
   plugins: [
@@ -73,6 +73,12 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: '** bucket name here **',
       },
     },
   ],
