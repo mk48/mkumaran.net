@@ -34,26 +34,24 @@ run `java -version` in command prompt to check the java installation
 Ensure that you downloaded the `bin` file from the download location. The other file(without bin) is also having the same content but it won't work (don't know exactly why!)
 ![](zookeper%20download%20bin%20file.png)
 
-### Config Zookeeper
+## Config Zookeeper
 1. Go to folder `C:\kafka\apache-zookeeper-3.5.6-bin\conf`
 2. Copy paste the config file `zoo_sample.cfg` as `zoo.cfg`
 3. Open `zoo.cfg` file in a text editor then change the `dataDir` value to `C:\\kafka\\tmp\\zookeeper` (ensure double back slashes `\\` used, if in windows)
 
 ![](zookeeper%20change%20dataDir%20location.png)
 
-### Start zookeeper
-Go to `C:\kafka\apache-zookeeper-3.5.6-bin\bin` folder in command prompt then run `zkServer.cmd`
-![](start%20zookeeper.png)
-
-## Kafka
-
-### Config Kafka
+## Config Kafka
 1. Open `C:\kafka\kafka_2.12-2.3.1\config\server.properties` file to make config changes.
 2. Update `log.dirs` values as `C:\\kafka\\tmp\\kafka-logs`
 
 ![](kafka%20log%20config%20location.png)
 
-### Start Kafka
+## Start zookeeper
+Go to `C:\kafka\apache-zookeeper-3.5.6-bin\bin` folder in command prompt then run `zkServer.cmd`
+![](start%20zookeeper.png)
+
+## Start Kafka
 1. Ensure that zookeeper is running
 2. Run below command from `C:\kafka\kafka_2.12-2.3.1` to start kafka
 `.\bin\windows\kafka-server-start.bat .\config\server.properties`
