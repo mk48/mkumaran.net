@@ -1,14 +1,26 @@
-# Kafka - One producer, Multiple consumer
+---
+title: How to use Kafka as a load balancer for a topic
+date: '2019-12-23'
+---
 
-## Create Admin project
+This is continuation of my Kafka series. Please read my previous article.
+
+## Running multiple Kafka consumer with one producer in C#
+
+To consume a topic from multiple consumer we need to create that much partition for a topic.
+
+for example:
+If we need 3 consumers to consume a topic as a load balancer then we have to create minimum 3 partition for that topic.
+
+## Create Admin project to create partition
 
 Create a new Admin project, add a button then include below program.
 
 here we will increase the `testTopic` partition to 4
 
-![](admin%20project%20form.png)
+![](./admin%20project%20form.png)
 
-```C#
+```CS
 using Confluent.Kafka;
 using Confluent.Kafka.Admin;
 using System;
@@ -54,14 +66,14 @@ namespace Admin
     }
 }
 ```
-
+We have to run this program only once.  
 Run the Admin project (above program) to increase the number of parition.
 
 ## Producer project
 
 Add one list box in form then add the below code
 
-```C#
+```CS
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -119,7 +131,7 @@ namespace KafkaProducer
 
 same as prodcuer form:- add a list box then add below code
 
-```C#
+```CS
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -194,16 +206,22 @@ namespace KafkaConsumer
 }
 ```
 
-## Run - One producer - One consumer
+## Consumer group
+1. Consumer group is the logic behind this.
+2. If we add a consumer into a group then that will act as a load balancer for that topic.
+3. for example: If we have two consumer with same `consumer group ID` then the messages will be spllited to these consumers. 
+4. For this, we need our topic must be paritioned. If we want to run 3 consumers as a load balancer then our topic must be partitioned minimum 3. That's what we did with the Admin project in the first step.
 
-![](one%20producer%20and%20one%20consumer%20screen.png)
+## Run - One producer - One consumer
+All the messages are consumed by the consumer
+![](./one%20producer%20and%20one%20consumer%20screen.png)
 
 ## Run - One producer - Two consumer
-
-![](one%20producer%20-%20two%20consumer.png)
+When we open one more producer, It will work as a load balancer. Parition 2 and 3 will be consumed by one consumer, 0 and 1 will be other consumer.
+![](./one%20producer%20-%20two%20consumer.png)
 
 ## Run - One producer - Multiple consumer
+We created four partition. If we run four consumers then one parition will be consumed by one consumer.
+![](./one%20producer%20-%20multiple%20consumer.png)
 
-![](one%20producer%20-%20multiple%20consumer.png)
-
-If we open one more consumer (5th), then the 5th one will not receive any topics.
+If we open one more consumer (5th), then the 5th one will not receive any topics, because the topic doesn't have 5th parition. Our topic is having onely 4 partition so only four consumers can consume at a same time. 
