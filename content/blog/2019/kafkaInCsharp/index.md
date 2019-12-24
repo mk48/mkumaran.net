@@ -9,18 +9,18 @@ We are going to use [Confluent Kafka](https://github.com/confluentinc/confluent-
 
 ## Setting up Projects in visual studio
 Create an empty project in .NET
-![](./create%20empty%20project.png)
+![](./create empty project.png)
 
 Delete empty project and keep only the solution
-![](./delete%20empty%20project.png)
+![](./delete empty project.png)
 
 Add new project
-![](./add%20new%20project.png)
+![](./add new project.png)
 
 Create new Kafka producer project
-![](./add%20new%20kafkaProducer%20project.png)
+![](./add new kafkaProducer project.png)
 
-![](./created%20kafkaProducer%20project.png)
+![](./created kafkaProducer project.png)
 
 ### Add NuGet packages
 Right click project --> Manage NuGet packages
@@ -29,10 +29,10 @@ Right click project --> Manage NuGet packages
 2. select the correct package
 3. install
 
-![](./install%20kafka%20nuget%20package.png)
+![](./install kafka nuget package.png)
 
 Ensure that `Confluent.Kafka` added as reference
-![](./ensure%20kafka%20reference%20added.png)
+![](./ensure kafka reference added.png)
 
 ## Add code
 Add a button and include the following code on click event
@@ -77,10 +77,10 @@ the above code is more self explanatory. We connect kafka and send `abc` message
 ## Add new project for Consumer
 
 Right click on solution --> Add --> New Project
-![](./new%20project%20for%20consumer.png)
+![](./new project for consumer.png)
 
 Add a new windows application project and name it `KafkaConsumer`
-![](./consumer%20and%20producer%20project%20in%20solution%20exp.png)
+![](./consumer and producer project in solution exp.png)
 
 We have to add the Confluent package for the consumer project also. 
 Add nuget package `Confluent.Kafka` like the KafkaProducer project.
@@ -174,12 +174,12 @@ There are five main steps in the consumer code.
 ### Run 
 
 Right click kafkaProducer project --> Debug --> Start new instance
-![](./start%20new%20instance.png)
+![](./start new instance.png)
 
 now do the same for KafkaConsumer project to run that.
 
 click produce button on producer the message will be added in the consumer application.
-![](./running%20producer%20and%20consumer.png)
+![](./running producer and consumer.png)
 
 ## Run producer without consumer application
 1. Close the consumer application.
@@ -240,4 +240,4 @@ Here we added a timer and producer a message every second.
 
 Now run the consumer and producer.
 
-![](./producer%20with%20timer.png)
+![](./producer with timer.png)

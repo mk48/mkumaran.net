@@ -18,7 +18,7 @@ Create a new Admin project, add a button then include below program.
 
 here we will increase the `testTopic` partition to 4
 
-![](./admin%20project%20form.png)
+![](./admin project form.png)
 
 ```CS
 using Confluent.Kafka;
@@ -214,14 +214,14 @@ namespace KafkaConsumer
 
 ## Run - One producer - One consumer
 All the messages are consumed by the consumer
-![](./one%20producer%20and%20one%20consumer%20screen.png)
+![](./one producer and one consumer screen.png)
 
 ## Run - One producer - Two consumer
 When we open one more producer, It will work as a load balancer. Parition 2 and 3 will be consumed by one consumer, 0 and 1 will be other consumer.
-![](./one%20producer%20-%20two%20consumer.png)
+![](./one producer - two consumer.png)
 
 ## Run - One producer - Multiple consumer
 We created four partition. If we run four consumers then one parition will be consumed by one consumer.
-![](./one%20producer%20-%20multiple%20consumer.png)
+![](./one producer - multiple consumer.png)
 
 If we open one more consumer (5th), then the 5th one will not receive any topics, because the topic doesn't have 5th parition. Our topic is having onely 4 partition so only four consumers can consume at a same time. 
