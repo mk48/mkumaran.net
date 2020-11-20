@@ -1,5 +1,5 @@
 ---
-title: ActiveMQ in C# windows
+title: How to use ActiveMQ in C#
 date: '2020-11-21'
 ---
 
@@ -63,6 +63,10 @@ password: admin
 
 ![](wpf-csharep-project-for-activemq.png)
 
+### Default port for ActiveMQ
+
+`61616` is the default port for ActiveMQ, so we have to connect `localhost:61616`
+
 ### Create producer and send message in C
 
 Create below XAML in the window
@@ -115,7 +119,7 @@ namespace ActiveMQPOC
             // Create a Session
             this.session = connection.CreateSession(AcknowledgementMode.AutoAcknowledge);
 
-            // Create the destination (Topic or Queue)
+            // Get the destination (Topic or Queue)
             IDestination destination = this.session.GetQueue("testqueue");
 
             // Create a MessageProducer from the Session to the Topic or Queue
@@ -160,5 +164,102 @@ namespace ActiveMQPOC
 ## Create a C# WPF project for consumer
 
 create one more C# project in the same solution.
+Add the same nuget package in this project also.
 
 ![](add-one-more-project-in-csharp-wpf.png)
+
+### Consumer UI
+
+simple add a list box in xaml
+
+```xml
+    <Grid>
+        <ListBox Name="lstBox">
+        </ListBox>
+    </Grid>
+```
+
+### Consumer C# code
+
+add below code in the windows's code behind
+
+```Csharp
+using Apache.NMS;
+using Apache.NMS.ActiveMQ;
+using System;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace ActiveMQConsumer
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private IConnection connection;
+        private ISession session;
+        private IMessageConsumer consumer;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void Init()
+        {
+            Uri connecturi = new Uri("activemq:tcp://localhost:61616");
+            ConnectionFactory connectionFactory = new ConnectionFactory(connecturi);
+
+            // Create a Connection
+            this.connection = connectionFactory.CreateConnection();
+            this.connection.Start();
+
+            // Create a Session
+            this.session = connection.CreateSession(AcknowledgementMode.AutoAcknowledge);
+
+            // Get the destination (Topic or Queue)
+            IDestination destination = this.session.GetQueue("testqueue");
+
+            // Create a MessageProducer from the Session to the Topic or Queue
+            this.consumer = this.session.CreateConsumer(destination);
+            this.consumer.Listener += Consumer_Listener;
+        }
+
+        private void Consumer_Listener(IMessage message)
+        {
+            var txtMessage = message as ITextMessage;
+            lstBox.Dispatcher.Invoke(() => {
+                lstBox.Items.Add(txtMessage.Text);
+            });
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Init();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Clean up
+            consumer.Close();
+            session.Close();
+            connection.Close();
+        }
+    }
+}
+```
+
+## Run Producer and Consumer program at the same time
+
+in visual studio, right click on a project --> Debug --> Start a new instance.
+start producer and consumer project.
+
+![](visual-studio-run-multiple-project-at-a-same-time.png)
+
+### Running screen
+
+by clicking the send message at producer program, we can see the messages reached at consumer's side.
+At the same time we can refresh the admin webpage to see the status.
+
+![](activemq-producer-consumer-running.png)
