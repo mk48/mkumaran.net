@@ -15,7 +15,7 @@ Just click next, next in the installation wizard.
 
 Once the installation wizard completes, go to command prompt and type `go version` to check whether it's installed properly.
 
-![](go%20version%20in%20command%20prompt.png)
+![](go version in command prompt.png)
 
 ## Write your first Go program
 
@@ -37,3 +37,11 @@ func main() {
 Open command prompt and go to `C:\goprg` folder and run below command
 
 `go run my.go`
+
+## Create exe
+
+below command to build and create exe
+
+```
+go build my.go
+```
