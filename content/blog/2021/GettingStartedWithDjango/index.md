@@ -71,6 +71,8 @@ open `http://localhost:8000` in browser.
 
 ![](RunningNewDjangoPage.png)
 
+stop the running server and move to next step.
+
 ### Enter to virtual environment
 
 from command prompt to enter into virtual environment
@@ -127,3 +129,57 @@ Run below command to auto generate models. This will overwrite the exisitng `mod
 ```
 python manage.py inspectdb > .\app\models.py
 ```
+
+![](AutogenerateModelsForDjango.png)
+
+### migration
+
+```
+python manage.py migrate
+```
+
+![](RunMigrate.png)
+
+by running the above command, few tables are created automatically.
+![](NewMigrationTablesCreated.png)
+
+### Create super user
+
+```
+python manage.py createsuperuser
+```
+
+![](CreateSuperUser.png)
+
+### Run and check
+
+Start the server
+
+```
+py manage.py runserver
+```
+
+Go to `http://localhost:8000/admin`
+
+![](DjangoAdminLoginScreen.png)
+
+stop the running server and move to next step.
+
+### Config
+
+add `app.apps.AppConfig` inside `INSTALLED_APPS` section in `settings.py` file
+
+![](AddAppintoSettings.png)
+
+Type below code `admin.py` file
+
+```python
+from django.contrib import admin
+from .models import Company, Medicine
+
+# Register your models here.
+admin.site.register(Company)
+admin.site.register(Medicine)
+```
+
+![](RegisterModelForAdmin.png)
