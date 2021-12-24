@@ -1,6 +1,6 @@
 ---
 title: Web push notifications
-date: '2021-12-25'
+date: '2021-12-24'
 ---
 
 ## Initialize server code
