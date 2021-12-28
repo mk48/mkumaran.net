@@ -1,9 +1,9 @@
 ---
-title: PWA using Blazor
+title: PWA application using Blazor - Part 1:notification
 date: '2021-12-25'
 ---
 
-## Create PWA application
+## Create a new Blazor PWA application
 
 In the create new project screen, select `Blazor WebAssembly App`
 ![Create new blazor application](create-new-blazor-app.png)
@@ -20,7 +20,7 @@ Once project created it will be like the below
 Run the application
 ![Running PWA blazor application](running-pwa-blazor-application.png)
 
-## Create new notification page
+## Create notification screen
 
 add below code into `BlazorPWA\Client\Shared\NavMenu.razor`
 
@@ -32,7 +32,7 @@ add below code into `BlazorPWA\Client\Shared\NavMenu.razor`
 </div>
 ```
 
-after add that code it should be like below
+it should be like below after adding that above code.
 ![Notification href in nav bar added](codewindow-notification-link-in-nav-bar.png)
 
 create new file `Notification.razor` and add simple code like in the below screen.
@@ -41,6 +41,8 @@ create new file `Notification.razor` and add simple code like in the below scree
 
 run the application and ensure that new page is working
 ![](new-notification-web-page.png)
+
+### Push notification javascript file
 
 Add new file `pushNotifications.js`
 ![](add-new-push-notification-js-file.png)
@@ -108,8 +110,10 @@ add below code to that file `pushNotifications.js`
 link that file in the `index.html`
 ![Link the pushnotification.js in HTML](link-pushnotification-js-in-html.png)
 
-create `NotificationSubscription.cs` file under `BlazorPWA.Shared` project
+create `NotificationSubscription.cs` file under `BlazorPWA.Shared` project.
+This is shared class used in client and server side to send/receive data.
 ![](create-new-notificationsubscription.png)
+
 add below code
 
 ```csharp
@@ -132,7 +136,7 @@ namespace BlazorPWA.Shared
 }
 ```
 
-## Install webpush in server code
+## Install webpush nuget in server code
 
 we will use [Webpush](https://github.com/web-push-libs/web-push-csharp/) in server for sending notifications.
 
@@ -142,7 +146,7 @@ Right click server project and select `manage nuget packages`
 install `webpush` nuget
 ![Install nuget package](install-webpush-nuget-package.png)
 
-ensure `webpush` is installed
+Ensure `webpush` is installed
 ![Ensure web push installed](ensure-webpush-installed.png)
 
 ### Generating public and private keys for webpush
@@ -174,8 +178,8 @@ In the output window we can see the private and public keys, just copy paste the
 
 open `pushNotifications.js` then replace the publick key with generated key from previous step.
 
-- in real application, we have to pass this public key from a REST service.
-- I just copy pasted the key for example.
+- in real application, we have to pass this public key from a REST service. Keep the key in server and send to client by REST service.
+- I just copy pasted the key here for example.
   ![](update-publickey-in-client.png)
 
 ## Create notification code in server
@@ -185,7 +189,7 @@ create new controller in server
 
 ![Create controller window](create-empty-controller.png)
 
-type below code in the new file ``
+type below code in the new file `NotificationController.cs`
 
 ```csharp
 using BlazorPWA.Shared;
@@ -216,6 +220,8 @@ namespace BlazorPWA.Server.Controllers
             //Replace with your generated public/private key
             var publicKey = "BN1IymLg1hHX79F7_Uh491570JdJ_1WtlkygDtLQQkV8Oa7pWhMKzSckaN_Q207K7FRX6tI";
             var privateKey = "yV__l2FM56uvh6X3_eGd_ahpWNXzd5Vom7A";
+
+            //give a website URL or mailto:your-mail-id
             var vapidDetails = new VapidDetails("http://mkumaran.net", publicKey, privateKey);
             var webPushClient = new WebPushClient();
 
@@ -346,3 +352,11 @@ below is the running webpage
 
 demo screen
 ![running demo screen](notification-running.gif)
+
+## Next
+
+- Here, I just explained the concept and not the best practices.
+- Notification in separate device will be treated a new subscription. One user can use multiple devices. so in server side we have to keep all the devices for a user.
+- while unsubscribing, we have to remove all the device info in server side also.
+
+In the next post, i will explain how to build and deploy.
