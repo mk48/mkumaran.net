@@ -340,6 +340,11 @@ self.addEventListener('push', event => {
     data: { url: payload.url },
   })
 })
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close()
+  event.waitUntil(clients.openWindow(event.notification.data.url))
+})
 ```
 
 ## Run the application
