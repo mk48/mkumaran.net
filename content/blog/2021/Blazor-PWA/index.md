@@ -1,5 +1,5 @@
 ---
-title: PWA application using Blazor - Part 1:notification
+title: PWA application using Blazor
 date: '2021-12-25'
 ---
 
@@ -363,5 +363,3 @@ demo screen
 - Here, I just explained the concept and not the best practices.
 - Notification in separate device will be treated a new subscription. One user can use multiple devices. so in server side we have to keep all the devices for a user.
 - while unsubscribing, we have to remove all the device info in server side also.
-
-In the next post, i will explain how to build and deploy.
