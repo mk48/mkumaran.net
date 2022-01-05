@@ -358,6 +358,10 @@ below is the running webpage
 demo screen
 ![running demo screen](notification-running.gif)
 
+## Reference
+
+[PWA notification in Blazor](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications)
+
 ## Next
 
 - Here, I just explained the concept and not the best practices.

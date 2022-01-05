@@ -3,6 +3,8 @@ title: Web push notifications
 date: '2021-12-24'
 ---
 
+This tutorial is based on a youtube video [Web Push Notifications - End to End implementation](https://www.youtube.com/watch?v=2zHqTjyfIY8)
+
 ## Initialize server code
 
 1. create new folder called `server`
@@ -199,18 +201,14 @@ webpush.sendNotification(pushSubscription, 'Your Push Payload Text')
 run the `server\index.js` file using `node` command.
 
 `node index.js`
-![](run-server-code.png)
+![Run the server code](run-server-code.png)
 
 we will get the notification on screen now.
 
-![](push-notification-shown-on-screen.png)
+![Push notification showing on screen](push-notification-shown-on-screen.png)
 
 ## Reference
 
-https://webpushdemo.azurewebsites.net/
-
-for blazor: https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications
-
-youtube: https://www.youtube.com/watch?v=2zHqTjyfIY8
-
-detailed code from microsoft-edge: https://github1s.com/MicrosoftEdge/pushnotifications-demo/blob/HEAD/src/service-worker.js
+1. [Web Push Notifications](https://webpushdemo.azurewebsites.net/)
+2. [Youtube video - Web Push Notifications - End to End implementation](https://www.youtube.com/watch?v=2zHqTjyfIY8)
+3. [Push notification sample code from Microsoft edge](https://github.com/MicrosoftEdge/pushnotifications-demo)
