@@ -14,7 +14,7 @@ This tutorial is based on a youtube video [Web Push Notifications - End to End i
 after running above commands, your server folder should be like this
 
 **Server folder**
-![After installed web push](after%20npm%20intsall%20web-push.png)
+![After installed web push](after-npm-intsall-web-push.png)
 
 **package.json file**
 
