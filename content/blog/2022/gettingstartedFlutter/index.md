@@ -62,3 +62,17 @@ Selected image will be installed.
 ![](after-image-installed-click-next.png)
 
 ![](select-device-and-run.png)
+
+![](android-emu-running.png)
+
+![](run-flutter-doctor-after-emu-installed.png)
+
+![](sdk-manager-icon.png)
+
+![](sdk-command-line-install.png)
+
+![](flutter-doctor-after-command-line-installed.png)
+
+run `flutter doctor --android-licenses` command to resolve the android licenses.
+
+![](flutter-doctor-after-full.png)
