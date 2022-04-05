@@ -1,20 +1,21 @@
 ---
-title: Getting started in Flutter
-date: '2022-03-19'
+title: Getting started with Flutter - Installation
+date: '2022-04-03'
 ---
 
-## Install Flutter
+## 1. Install Flutter
 
-go to https://flutter.dev/ and download the SDK. It is a zip file.
-Extract that content into C:\
+* Go to https://flutter.dev/ and download the SDK. 
+* It is a zip file. Extract that content into C:\
 
 ![Flutter extracted location](flutterExtractedLocation.png)
 
+### 1.1 Update environment variable
 add `c:\flutter\bin` into path environment variable.
 
 ![Add flutter into environment variable](add-into-env-variable.png)
 
-Ensure that environment variable is set correctly.
+### 1.2 Ensure that environment variable is set correctly.
 go to command prompt and run the below command
 
 ```
@@ -25,7 +26,7 @@ where flutter dart
 run `flutter doctor` command
 ![Flutter doctor output](flutter-doctor-output.png)
 
-## Install andriod studio
+## 2. Install andriod studio
 
 download and install [android studio](https://developer.android.com/studio)
 
@@ -40,39 +41,102 @@ once the installation is done, open the andriod studio.
 select standard installation method.
 ![standard-installation](standard-installation.png)
 
-select accept in the license agreement
+Select accept in the license agreement
+* select `android-sdk-license` and click Accept.
+* select `intel-android-extra-license` and click Accept.
+* select `android-sdk-preview-license` and click Accept.
+
 ![License agreemnt select agree](select-agree.png)
 
-installation is going on
+Installation is going on
 ![android installation going on](installation-is-going.png)
 
-### Create virtual device
+### 2.1 Create virtual device
 
-![](open-create-virtual-device.png)
+In the android welcome screen, click `More Actions` and select `Virtual Device Manager`.
+If you don't get welcome screen in Andriod studio then close the current project `File --> Close project`. It will close the project and take you to the welcome screen.
+![Welcome to android studio screen](open-create-virtual-device.png)
 
-![](click-create-device.png)
+In the Device manager screen click `Create device` button.
+![Create device button in Device manager window](click-create-device.png)
 
-![](select-phone.png)
+Select a phone hardware and click `Next`.
+![Select Phone type in virtual device config](select-phone.png)
 
-![](select-image-and-download.png)
+Here, select phone software (Android OS) by clicking `Download` link near the OS version.
+![Select phone OS](select-image-and-download.png)
 
-Selected image will be installed.
-![](selected-image-installing.png)
+Selected image(OS) will be installed.
+![Selected OS is installed](selected-image-installing.png)
 
-![](after-image-installed-click-next.png)
+Once the image(OS) installed you can see the `Download` link gone for that name. Which means that image is already downloaded. We can click `Next` button now.
+![After OS installed](after-image-installed-click-next.png)
 
-![](select-device-and-run.png)
+There will be `play` button in the device manager, use that to open the emulator.
+![Play button to open the Emulator](select-device-and-run.png)
 
-![](android-emu-running.png)
+Emulator will be like below.
+![Andriod emulator](android-emu-running.png)
 
-![](run-flutter-doctor-after-emu-installed.png)
+use `flutter doctor` command to see everything is installed.
+![flutter doctor command after emulator installed](run-flutter-doctor-after-emu-installed.png)
+from the above screen we can see there are two items are missing in the installation/configuration.
 
-![](sdk-manager-icon.png)
+### 2.2 cmdline-tools component is missing
+from `flutter doctor` we got `cmdline-tools component is missing`. We will install that in this step.
 
-![](sdk-command-line-install.png)
+Open android studio. Click `SDK manager` icon.
+![SDK manager icon in Android studio](sdk-manager-icon.png)
 
-![](flutter-doctor-after-command-line-installed.png)
+1. Select `Appearance & Behavior --> System settings --> Andriod SDK`.
+2. Select `SDK Tools` tab.
+3. Check the `Android SDK Command line Tools`.
+4. Click Apply
 
-run `flutter doctor --android-licenses` command to resolve the android licenses.
+![Android SDK command line](sdk-command-line-install.png)
 
-![](flutter-doctor-after-full.png)
+Run `flutter doctor` command again to see.
+![flutter doctor after Command line tools installed](flutter-doctor-after-command-line-installed.png)
+Now the command line tool issue gone. Only the android licnese issue there. We will resove in the next step.
+
+### 2.3 Android licenses not accepted for flutter
+Run below command
+```
+flutter doctor --android-licenses
+```
+to resolve the android licenses.
+
+Once done run `flutter doctor` again.
+![flutter doctor after issues solved](flutter-doctor-after-full.png)
+
+Now we are ready to create flutter app.
+
+## 3. Create flutter app
+
+* Go to a directory where you want to place the flutter application.
+* run `flutter create yourAppName`
+
+![flutter create app command](flutter-create-cmd.png)
+
+We have created our app, now we have to open Emulator to run the app.
+
+### 3.1 Open emulator to run
+Open andriod studio. If you don't see welcome screen then `File --> Close project` in android to see the welcome screen.
+
+In the welcome screen, click `⋮` then `Virtual Device Manager`.
+![Open VDM in welcome screen](open-emulator-to-run.png)
+
+In the device manager click `Play` button to open the Emulator.
+![Open emulator from Device manager](start-virtual-device.png)
+
+### 3.2 Run flutter
+
+use `flutter run` command to run the flutter app.
+![](running-flutter.png)
+
+## What's next
+This is just installation and creating first flutter app tutorial. Thtere is a long way to go. Refer below tutorial.
+
+* [▶ Flutter Course for Beginners – 37-hour Cross Platform App Development Tutorial](https://www.youtube.com/watch?v=VPvVD8t02U8)
+
+* [▶ Flutter Crash Course for Beginners 2021 - Build a Flutter App with Google's Flutter & Dart](https://www.youtube.com/watch?v=x0uinJvhNxI)
