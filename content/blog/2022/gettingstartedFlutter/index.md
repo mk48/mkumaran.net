@@ -115,6 +115,8 @@ Now we are ready to create flutter app.
 
 * Go to a directory where you want to place the flutter application.
 * run `flutter create yourAppName`
+OR
+* run `flutter create --org net.mkumaran yourAppName`
 
 ![flutter create app command](flutter-create-cmd.png)
 
