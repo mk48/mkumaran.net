@@ -135,25 +135,25 @@ give a commit message and click 'save and run'
 it's running, once done you can see success tick and published artifcate.
 ![Pipeline running completed](pipeline-completed.png)
 
-## Create new Azure service
+## Create app service
 
 In azure, we have to create a new `App service`
-Here I have selected windows as OS, but I suggest you to stick with Linux for NodeJs.
-![Create new app service basic tab](new-app-service-basic.png)
+![Create new app service basic tab](new-app-service-starting-config.png)
 
 In the next deployment tab, select disable, because we are not using GitHub's action.
 ![Don't select github action](dont-select-github-ci-cd.png)
 
 Below is the final review+create screen for full information.
-![Review create](Review-create.png)
+![Final step to create app service](final-step-to-create-app-service.png)
 
 Once the service is created, you can see the running status.
 ![App service created](app-service-created.png)
 
-Create slots for staging
-Open the created app service
-go to deployment slots section
-add slot.
+### Create slots for staging
+
+I already created app service with free plan which doesn't support slots, so I changed to paid plan (Standard S1). So Before continue slots, you have to change your app service plan to paid one.
+
+Open the created app service, go to deployment slots section, add slot.
 ![Create slots for staging](slots-for-staging.png)
 
 give a name for the slot.
@@ -195,13 +195,13 @@ In parameter section click `unlink all`. I don't have that in the below screen.
 1. Select run on agent
 2. give a name for display
 3. select azure pipelines
-4. i have selected `windows` but better stick with `linux`
+4. select `ubuntu latest`
 5. Ensure your artifact selected
 
-![Agent settings](agent-settings.png)
+![Staging release settings](staging-release-settings.png)
 
 Make changes in the `Deploy azure app service` like below image
-![App service settings](app-service-settings.png)
+![App service deployment setttings](app-service-deploy-settings.png)
 
 ### Create production release pipeline
 
@@ -212,7 +212,7 @@ Change the stage name as production
 ![Change stage name](changing-stage-name.png)
 
 It's important to change the production's slot as production.
-![Change slot as production](change-slot-as-production.png)
+![Change slot as production](change-production-slot.png)
 
 Create relase
 ![Create release](create-release.png)
