@@ -164,6 +164,12 @@ Click add.
 Once that's done, we can see one more app service with `slot`
 ![Deployment slots](deployment-slots.png)
 
+give startup command in both stagin and production slots.
+![Startup command](startup-command.png)
+
+below settings to view the container logs
+![Settings to view container logs](settings-to-view-container-log.png)
+
 ## Create new Release
 
 ### Create staging release pipeline
@@ -180,13 +186,15 @@ Give a name for stage, like test, dev, or pre-prod whatever. Then close this pop
 Name for the release pipeline
 ![Name for the release pipe line](name-for-the-release-pipeline.png)
 
-Select Artifact
-select build pipeline
-give a source alias
+1. Select Artifact
+2. select build pipeline
+3. give a source alias
+
 ![Select artifact](select-artifacts.png)
 
-Select staging
-Go to tasks tab
+1. Select staging
+2. Go to tasks tab
+
 ![Move to tasks tab](move-to-tasks-tab.png)
 
 In parameter section click `unlink all`. I don't have that in the below screen.
@@ -219,3 +227,12 @@ Create relase
 
 Select all, we will do manual trigger.
 ![Manual trigger](manual-trigger.png)
+
+Once created teh relase, click on name to open
+![Release created](release-created.png)
+
+I have already deployed, so it is showing as redeploy, but first it should be `deploy` just click to deploy.
+![Depoly button](deploy-button.png)
+
+Once deployment done, we can see the log in `Log stream`
+![Listening on port 8080](listening-port-8080.png)
