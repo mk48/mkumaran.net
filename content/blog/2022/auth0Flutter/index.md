@@ -1,6 +1,6 @@
 ---
 title: Auth0 with Flutter
-date: '2022-05-29'
+date: "2022-05-29"
 ---
 
 ## Setup auth0
@@ -9,7 +9,7 @@ date: '2022-05-29'
 2. In the applications sections, create a new application.
 3. Select `native` as application type
 
-![auth0 create application](auth0-create-application.png)
+![auth0 create application](./auth0-create-application.png)
 
 ![auth0 name for application](auth0-give-name-for-application.png)
 
@@ -20,6 +20,7 @@ In the `settings` section give call back URL as `net.mkumaran.aasaan://login-cal
 ![auth0 screen with callback urls](auth0-callback-url.png)
 
 ## Create flutter app
+
 `flutter create --org net.mkumaran aasaan`
 To know more about how to create flutter. Read this [create flutter](http://mkumaran.net/2022/gettingstartedFlutter/)
 
@@ -27,11 +28,13 @@ run below command to run
 `flutter run`
 
 Add below line in `pubspec.yaml`
+
 ```
 http: ^0.13.4
 flutter_appauth: ^4.0.0
 flutter_secure_storage: ^5.0.2
 ```
+
 ![flutter coding screen after added plugin](add-flutter-plugin.png)
 
 run `flutter pub get`

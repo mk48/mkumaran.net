@@ -1,8 +1,20 @@
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+ */
+
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
   siteMetadata: {
     title: `mkumaran.net`,
-    author: `M Kumaran`,
-    description: `Personal website and blog of M.Kumaran`,
+    author: {
+      name: `M Kumaran`,
+      summary: `. Passionate in programming.`,
+    },
+    description: `Personal website and blog of M.Kumaran.`,
     siteUrl: `http://mkumaran.net/`,
     social: {
       twitter: `kumaran_muthu`,
@@ -10,6 +22,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -20,8 +33,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -31,7 +44,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 630,
             },
           },
           {
@@ -41,44 +54,72 @@ module.exports = {
             },
           },
           `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
         ],
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-feed`,
       options: {
-        trackingId: `UA-68281380-1`,
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.html }],
+                })
+              })
+            },
+            query: `{
+              allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+                nodes {
+                  excerpt
+                  html
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    date
+                  }
+                }
+              }
+            }`,
+            output: "/rss.xml",
+            title: "mkumaran.net RSS Feed",
+          },
+        ],
       },
     },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `M Kumaran personal blog and website`,
-        short_name: `mkumaran`,
+        name: `Gatsby Starter Blog`,
+        short_name: `Gatsby`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
-      },
-    },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: 'mkumaran.net',
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
   ],

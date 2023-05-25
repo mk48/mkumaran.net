@@ -1,6 +1,6 @@
 ---
 title: How to use Apache kafka in C#
-date: '2019-12-22'
+date: "2019-12-22"
 ---
 
 In this article I will explain how to use kafka in C#. Ensure that you already installed kafka for windows else check my previous article [Install Apache Kafka in Windows 10](http://mkumaran.net/2019/kafka)
@@ -8,33 +8,36 @@ In this article I will explain how to use kafka in C#. Ensure that you already i
 We are going to use [Confluent Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) library.
 
 ## Setting up Projects in visual studio
+
 Create an empty project in .NET
-![](./create empty project.png)
+![Create empty project](create-empty-project.png)
 
 Delete empty project and keep only the solution
-![](./delete empty project.png)
+![Delete empty project](delete-empty-project.png)
 
 Add new project
-![](./add new project.png)
+![Add new project](add-new-project.png)
 
 Create new Kafka producer project
-![](./add new kafkaProducer project.png)
+![Add new kafka producer project](add-new-kafkaProducer-project.png)
 
-![](./created kafkaProducer project.png)
+![Created kafka producer](created-kafkaProducer-project.png)
 
 ### Add NuGet packages
+
 Right click project --> Manage NuGet packages
 
 1. search `Confluent.Kafka`
 2. select the correct package
 3. install
 
-![](./install kafka nuget package.png)
+![Install kafka nuget package](install-kafka-nuget-package.png)
 
 Ensure that `Confluent.Kafka` added as reference
-![](./ensure kafka reference added.png)
+![Ensure kafka reference added](ensure-kafka-reference-added.png)
 
 ## Add code
+
 Add a button and include the following code on click event
 
 ```CS
@@ -72,20 +75,22 @@ namespace KafkaProducer
 }
 
 ```
+
 the above code is more self explanatory. We connect kafka and send `abc` message to `testTopic` topic
 
 ## Add new project for Consumer
 
 Right click on solution --> Add --> New Project
-![](./new project for consumer.png)
+![New project for consumer](new-project-for-consumer.png)
 
 Add a new windows application project and name it `KafkaConsumer`
-![](./consumer and producer project in solution exp.png)
+![Consumer and producer project](consumer-and-producer-project-in-solution-exp.png)
 
-We have to add the Confluent package for the consumer project also. 
+We have to add the Confluent package for the consumer project also.
 Add nuget package `Confluent.Kafka` like the KafkaProducer project.
 
 ### Add code
+
 Add a list box in form and add below code
 
 ```CS
@@ -105,7 +110,7 @@ namespace KafkaConsumer
         {
             InitializeComponent();
         }
-        
+
         private void StartListen()
         {
             var conf = new ConsumerConfig
@@ -151,7 +156,7 @@ namespace KafkaConsumer
         {
             cts.Cancel();
         }
-        
+
         private async void frmConsumer_Load(object sender, EventArgs e)
         {
             await Task.Run(() => StartListen());
@@ -160,28 +165,30 @@ namespace KafkaConsumer
 }
 
 ```
+
 1. We need a endless loop for consumer so created a new `Task` in form load.
 2. We have separate method `StartListen` for consumer.
 
 There are five main steps in the consumer code.
 
 1. Build the consumer by passing config.
-2. Subscribe topic `testTopic` 
+2. Subscribe topic `testTopic`
 3. Create endless loop.
 4. Consume the messages. This is blocking statement. The execution waits here untile the cosumer consumes a message. Once we get any message then the execution will move next line.
 5. Add the received message into listbox. We are inside a different thread so directly updating UI element is not possible, so we use `Invoke` method to update the UI.
 
-### Run 
+### Run
 
 Right click kafkaProducer project --> Debug --> Start new instance
-![](./start new instance.png)
+![Start new instance](start-new-instance.png)
 
 now do the same for KafkaConsumer project to run that.
 
 click produce button on producer the message will be added in the consumer application.
-![](./running producer and consumer.png)
+![running-producer-and-consumer.png](running-producer-and-consumer.png)
 
 ## Run producer without consumer application
+
 1. Close the consumer application.
 2. Click produce button twice in producer application.
 3. Now run the consumer again.
@@ -209,7 +216,7 @@ namespace KafkaProducer
         {
             InitializeComponent();
         }
-        
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -236,8 +243,9 @@ namespace KafkaProducer
 }
 
 ```
+
 Here we added a timer and producer a message every second.
 
 Now run the consumer and producer.
 
-![](./producer with timer.png)
+![producer-with-timer.png](producer-with-timer.png)
