@@ -40,7 +40,7 @@ Ensure that `Confluent.Kafka` added as reference
 
 Add a button and include the following code on click event
 
-```CS
+```Csharp
 using System;
 using System.Windows.Forms;
 using Confluent.Kafka;
@@ -200,7 +200,7 @@ Delete command button in the producer project and add a timer control in form de
 
 Add the below code.
 
-```CS
+```Csharp
 using System;
 using System.Windows.Forms;
 using Confluent.Kafka;

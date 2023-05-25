@@ -1,6 +1,6 @@
 ---
 title: How I avoided Ads in Network-wide using Pi-hole and a Raspberry Pi
-date: '2019-06-16'
+date: "2019-06-16"
 ---
 
 ## TL;DR
@@ -18,7 +18,7 @@ Mostly we use [Ghostery](https://www.ghostery.com/) and [uBlock Origin](https://
 
 Raspberry-Pi and SD-Card
 
-![My Raspberry-Pi](my raspberry pi.jpg)
+![My Raspberry-Pi](my-raspberry-pi.jpg)
 
 ## 1. Download Required software
 
@@ -26,13 +26,13 @@ Raspberry-Pi and SD-Card
 
 We have to setup raspberry pi first, for the same download [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) OS.
 
-![Download raspbian](./02-Download Raspbian for Raspberry Pi.png)
+![Download raspbian](./02-Download-Raspbian-for-Raspberry-Pi.png)
 
 ### 1.2 Flash software
 
 Once downloaded the Raspbian we need a software to put into Raspberry Pi. We can use [Etcher Flash](https://www.balena.io/etcher/) to flash OS images to SD cards & USB drives.
 
-![Flash software](./03-balenaEtcher - Home.png)
+![Flash software](./03-balenaEtcher-Home.png)
 
 Download and install the flash software
 
@@ -41,19 +41,19 @@ Download and install the flash software
 1. Insert the SD card into system
 2. Open the flash software
 
-![Flash open screen](./04-Etcher Select image.png)
+![Flash open screen](./04-Etcher-Select-image.png)
 
 3. Browser and select the downloaded Raspbian from step 1.1
 
 4. flashing
 
-![read to flash](./06-ready to flash.png)
+![read to flash](./06-ready-to-flash.png)
 
 ## Power-on Raspberry-Pi
 
 I connected my Pi to TV through HDMI cable.
 
-![raspberry pi connected on TV](./raspberry pi connected on TV.jpg)
+![raspberry pi connected on TV](./raspberry-pi-connected-on-TV.jpg)
 
 ## 3. Install Pi-hole on Raspberry Pi
 
@@ -66,9 +66,9 @@ once the flash done, insert the SD card into Raspberry-pi and power on.
 curl -sSL https://install.pi-hole.net | bash
 ```
 
-![install pi-hole](./09-pi-hole installation 1.png)
+![install pi-hole](./09-pi-hole-installation-1.png)
 
-![pi-hole installation done](./10-pi-hole installation last screen with pass.png)
+![pi-hole installation done](./10-pi-hole-installation-last-screen-with-pass.png)
 
 Note the password from the above screen
 
@@ -84,7 +84,7 @@ go to DHCP server configuration page.
 
 **Ensure that you make changes on LAN page, not on WLAN page**
 
-![Router config page](./router config page.png)
+![Router config page](./router-config-page.png)
 
 Enter the raspberry-pi's IP address as DNS address
 
@@ -100,7 +100,7 @@ Type the password which we noted on step #3.
 
 85% of my network is blocked which are for advertisment purpose.
 
-![Pi-hole Admin Console](./Pi-hole Admin Console.png)
+![Pi-hole Admin Console](./Pi-hole-Admin-Console.png)
 
 ## Remote desktop connection to Pi (optional)
 
@@ -122,7 +122,7 @@ Read [this tutorial](https://www.raspberrypi.org/magpi/ssh-remote-control-raspbe
 
 I don't have keyboard !!!
 
-![my raspberry pi - don't have keyboard](./my raspberry pi - don't have keyboard.jpg)
+![my raspberry pi - doesn't have keyboard](./my-raspberry-pi-does-not-have-keyboard)
 
 1. I don't have USB keyboard to connect Raspberry-Pi. I connected the Pi into my TV using HDMI and connected a USB mouse, but no keyboard! I managed to copy paste the text from file name.
 2. Copied each and every character from a file name. I opened the file explorer in Pi and search the required character in a file/folder name, then right click on it --> rename, then select a particular character copy it then paste it into the terminal.

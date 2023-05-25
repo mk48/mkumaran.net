@@ -1,21 +1,24 @@
 ---
 title: Best way to do async request (ajax and side effects) in ReactJs using hooks, Redux style - useReducer()
-date: '2019-05-26'
+date: "2019-05-26"
 ---
 
-##How to fetch data with React Hooks?
+## How to fetch data with React Hooks?
+
 You will mostly end-up with [Robin's blog post](https://www.robinwieruch.de/react-hooks-fetch-data/) regarding the fecth method. But the problem using useState() is that we can't execute any other code after fetch success.
 
 for an example:- do one fetch, if that fetch is successfull then call some JavaScript like clear the form using useState(), if fails display error message. That's somehow difficult if we use useState().
 
-##fetch using useState()
+## fetch using useState()
+
 I created a [codesandbox](https://codesandbox.io/s/qvxm4z4qn4) based on best practices to fetch data using hooks. Please feel free to update the script to make some Js after the fetch.
 
 ![My codesandbox](./my-codesandbox.png)
 
 in that codesandbox, try to execute some Js after the fetch. It won't work becase it's sync code.
 
-##Always use useReducer() to fetch data
+## Always use useReducer() to fetch data
+
 I am not big fan of useState() method due to it's nature. I decided to use only useReducer() to fetch data and async operations. It's same like Redux style.
 
 1. Create two useReducer()
@@ -23,7 +26,7 @@ I am not big fan of useState() method due to it's nature. I decided to use only 
 3. use the async reducer as a main and call the other reducer inside.
 4. if you see the code, you can easily understand :)
 
-###Reducer for sync - only for state changes
+### Reducer for sync - only for state changes
 
 ```JavaScript
 function reducer(state, action) {
@@ -55,7 +58,7 @@ function reducer(state, action) {
 }
 ```
 
-###Reducer for async - side effects and fetch
+### Reducer for async - side effects and fetch
 
 ```JavaScript
 function dispatchMiddleware(dispatch) {
@@ -78,7 +81,7 @@ function dispatchMiddleware(dispatch) {
 }
 ```
 
-###Component
+### Component
 
 ```JavaScript
 export default function Users() {
